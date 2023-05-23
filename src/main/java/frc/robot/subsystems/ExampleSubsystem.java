@@ -4,12 +4,21 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class ExampleSubsystem extends SubsystemBase {
+
+  private TalonSRX talonSRX;
+
   /** Creates a new ExampleSubsystem. */
-  public ExampleSubsystem() {}
+  public ExampleSubsystem() {
+      // Create a Talon SRX object with device ID 1
+      talonSRX = new TalonSRX(1);
+  }
 
   /**
    * Example command factory method.
@@ -37,7 +46,7 @@ public class ExampleSubsystem extends SubsystemBase {
 
   @Override
   public void periodic() {
-    // This method will be called once per scheduler run
+    talonSRX.set(ControlMode.PercentOutput, 0.5);
   }
 
   @Override

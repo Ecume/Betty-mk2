@@ -12,12 +12,18 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class ExampleSubsystem extends SubsystemBase {
 
-  private TalonSRX talonSRX;
+  private TalonSRX talonSRX1;
+  private TalonSRX talonSRX2;
+  private TalonSRX talonSRX3;
+  private TalonSRX talonSRX4;
 
   /** Creates a new ExampleSubsystem. */
   public ExampleSubsystem() {
       // Create a Talon SRX object with device ID 1
-      talonSRX = new TalonSRX(1);
+      talonSRX1 = new TalonSRX(1);
+      talonSRX2 = new TalonSRX(2);
+      talonSRX3 = new TalonSRX(3);
+      talonSRX4 = new TalonSRX(4);
   }
 
   /**
@@ -46,7 +52,7 @@ public class ExampleSubsystem extends SubsystemBase {
 
   @Override
   public void periodic() {
-    talonSRX.set(ControlMode.PercentOutput, 0.5);
+    talonSRX1.set(ControlMode.Velocity, 0.1);
   }
 
   @Override

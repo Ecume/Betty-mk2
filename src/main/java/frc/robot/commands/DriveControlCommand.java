@@ -2,7 +2,6 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import edu.wpi.first.wpilibj2.command.Subsystem;
 import frc.robot.subsystems.DriveControlSubsytem;
 
 public class DriveControlCommand extends CommandBase {
@@ -11,13 +10,8 @@ public class DriveControlCommand extends CommandBase {
   /** Creates a new Control. */
   public DriveControlCommand(DriveControlSubsytem subsystem, XboxController m_operator) {
     addRequirements(subsystem);
-
     m_driveControlSubsystem = subsystem;
-
     m_controller = m_operator;
-
-
-    // Use addRequirements() here to declare subsystem dependencies.
   }
 
   // Called when the command is initially scheduled.
@@ -32,7 +26,6 @@ public class DriveControlCommand extends CommandBase {
       m_driveControlSubsystem.setSpeed2(0.1);
       m_driveControlSubsystem.setSpeed3(0.1);
       m_driveControlSubsystem.setSpeed3(0.1);
-
     }
 
     if (m_controller.getPOV() == 180) {
@@ -40,18 +33,10 @@ public class DriveControlCommand extends CommandBase {
       m_driveControlSubsystem.setSpeed2(-0.1);
       m_driveControlSubsystem.setSpeed3(-0.1);
       m_driveControlSubsystem.setSpeed3(-0.1);
-
     }
-
-
   }
 
   // Called once the command ends or is interrupted.
-  
-  public void hi() {
-    
-  }
-
   @Override
   public void end(boolean interrupted) {}
 

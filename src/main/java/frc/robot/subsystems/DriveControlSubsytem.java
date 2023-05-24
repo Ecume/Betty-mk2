@@ -3,7 +3,6 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
-import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class DriveControlSubsytem extends SubsystemBase {
@@ -22,7 +21,6 @@ public class DriveControlSubsytem extends SubsystemBase {
 
   @Override
   public void periodic() {
-    //not needed for now
   }
 
   public void setSpeed1(double current1) {

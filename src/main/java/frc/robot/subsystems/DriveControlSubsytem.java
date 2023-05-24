@@ -22,6 +22,22 @@ public class DriveControlSubsytem extends SubsystemBase {
 
   @Override
   public void periodic() {
-    talonSRX1.set(ControlMode.PercentOutput, 0.1);
+    //not needed for now
   }
+
+  public void setSpeed1(double current1) {
+    talonSRX1.set(ControlMode.PercentOutput, current1);
+  } 
+
+  public void setSpeed2(double current2) {
+    talonSRX2.set(ControlMode.PercentOutput, current2);
+  } 
+
+  public void setSpeed3(double current3) {
+    talonSRX3.set(ControlMode.PercentOutput, current3);
+  } 
+
+  public void setSpeed4(double current4) {
+    talonSRX4.set(ControlMode.PercentOutput, current4);
+  } 
 }

@@ -14,9 +14,9 @@ public class DriveControlSubsytem extends SubsystemBase {
 
   public DriveControlSubsytem() {
       talonSRX1 = new TalonSRX(1);
-      talonSRX2 = new TalonSRX(2);
-      talonSRX3 = new TalonSRX(3);
-      talonSRX4 = new TalonSRX(4);
+      talonSRX2 = new TalonSRX(8);
+      talonSRX3 = new TalonSRX(10);
+      talonSRX4 = new TalonSRX(11);
   }
 
   @Override

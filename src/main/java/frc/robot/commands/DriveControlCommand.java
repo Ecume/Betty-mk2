@@ -7,7 +7,7 @@ import frc.robot.subsystems.DriveControlSubsytem;
 public class DriveControlCommand extends CommandBase {
   private DriveControlSubsytem m_driveControlSubsystem;
   private XboxController m_controller;
-  /** Creates a new Control. */
+
   public DriveControlCommand(DriveControlSubsytem subsystem, XboxController m_operator) {
     addRequirements(subsystem);
     m_driveControlSubsystem = subsystem;

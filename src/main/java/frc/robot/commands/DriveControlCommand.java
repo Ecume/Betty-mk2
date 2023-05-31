@@ -34,8 +34,19 @@ public class DriveControlCommand extends CommandBase {
     }
 
     if (m_controller.getPOV() == 270){
-      m_driveControlSubsystem.LeftSwerve(0.3);
+      m_driveControlSubsystem.leftSwerve(0.3);
     }
+
+    //betty moves up daiagonal left at a constant speed
+    if (m_controller.getPOV() == 315) {
+      m_driveControlSubsystem.upLeftDiagonal(0.3);
+    }
+
+    if (m_controller.getPOV() == 135) {
+      m_driveControlSubsystem.upRightDiagonal(0.3);
+    }
+
+    
   }
 
   // Called once the command ends or is interrupted.

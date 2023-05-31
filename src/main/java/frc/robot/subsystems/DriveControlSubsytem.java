@@ -17,10 +17,15 @@ public class DriveControlSubsytem extends SubsystemBase {
       talonSRX2 = new TalonSRX(8);
       talonSRX3 = new TalonSRX(10);
       talonSRX4 = new TalonSRX(11);
+      talonSRX1.setInverted(true);
+      talonSRX4.setInverted(true);
   }
 
   @Override
   public void periodic() {
+    System.out.println("Sensor Vel:" + talonSRX1.getSelectedSensorVelocity());
+    System.out.println("Sensor Pos:" + talonSRX1.getSelectedSensorPosition());
+    System.out.println("Out %" + talonSRX1.getMotorOutputPercent());
   }
 
   public void setSpeed1(double current1) {
@@ -38,4 +43,25 @@ public class DriveControlSubsytem extends SubsystemBase {
   public void setSpeed4(double current4) {
     talonSRX4.set(ControlMode.PercentOutput, current4);
   } 
+
+  public void setAllSpeed(double speed){
+    talonSRX1.set(ControlMode.PercentOutput, speed);
+    talonSRX2.set(ControlMode.PercentOutput, speed);
+    talonSRX3.set(ControlMode.PercentOutput, speed);
+    talonSRX4.set(ControlMode.PercentOutput, speed);
+  }
+
+  public void rightSwerve(double speed){
+    talonSRX1.set(ControlMode.PercentOutput, -speed);
+    talonSRX2.set(ControlMode.PercentOutput, speed);
+    talonSRX3.set(ControlMode.PercentOutput, speed);
+    talonSRX4.set(ControlMode.PercentOutput, -speed);
+  }
+
+  public void LeftSwerve(double speed){
+    talonSRX1.set(ControlMode.PercentOutput, speed);
+    talonSRX2.set(ControlMode.PercentOutput, -speed);
+    talonSRX3.set(ControlMode.PercentOutput, -speed);
+    talonSRX4.set(ControlMode.PercentOutput, speed);
+  }
 }

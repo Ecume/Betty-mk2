@@ -21,18 +21,22 @@ public class DriveControlCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if (m_controller.getPOV() == 0) {
-      m_driveControlSubsystem.setSpeed1(0.1);
-      m_driveControlSubsystem.setSpeed2(0.1);
-      m_driveControlSubsystem.setSpeed3(0.1);
-      m_driveControlSubsystem.setSpeed3(0.1);
+    m_driveControlSubsystem.setAllSpeed(m_controller.getLeftY()); //adjusting speed
+
+    if (m_controller.getPOV() == 0) { //constant speed
+      m_driveControlSubsystem.setAllSpeed(0.3);
     }
 
     if (m_controller.getPOV() == 180) {
-      m_driveControlSubsystem.setSpeed1(-0.1);
-      m_driveControlSubsystem.setSpeed2(-0.1);
-      m_driveControlSubsystem.setSpeed3(-0.1);
-      m_driveControlSubsystem.setSpeed3(-0.1);
+      m_driveControlSubsystem.setAllSpeed(-0.3);
+    }
+
+    if (m_controller.getPOV() == 90){
+      m_driveControlSubsystem.rightSwerve(0.3);
+    }
+
+    if (m_controller.getPOV() == 270){
+      m_driveControlSubsystem.LeftSwerve(0.3);
     }
   }
 

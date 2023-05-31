@@ -14,11 +14,9 @@ public class DriveControlCommand extends CommandBase {
     m_controller = m_operator;
   }
 
-  // Called when the command is initially scheduled.
   @Override
   public void initialize() {}
 
-  // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
     m_driveControlSubsystem.setAllSpeed(m_controller.getLeftY()); //adjusting speed

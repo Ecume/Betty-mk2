@@ -4,6 +4,7 @@ import frc.robot.commands.DriveControlCommand;
 import frc.robot.subsystems.DriveControlSubsytem;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 
 /**
@@ -15,12 +16,15 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final XboxController m_xboxController = new XboxController(0);
+  private final JoystickButton m_joyA = new JoystickButton(m_xboxController, 1);
   private final DriveControlSubsytem m_driveSubsystem = new DriveControlSubsytem();
-  private final DriveControlCommand m_driveCommand = new DriveControlCommand(m_driveSubsystem, m_xboxController);
+  //private final DriveControlCommand m_driveCommand = new DriveControlCommand(m_driveSubsystem, m_xboxController);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
+  
     // Configure the trigger bindings
+    m_driveSubsystem.setDefaultCommand(new DriveControlCommand(m_driveSubsystem, m_xboxController));
     configureBindings();
   }
 
@@ -34,6 +38,10 @@ public class RobotContainer {
    * joysticks}.
    */
   private void configureBindings() {
+    //m_joyA.onTrue(m_driveCommand);
+    //if (m_xboxController.getRawButtonPressed(1)){
+      //m_driveSubsystem.setSpeed1(0.3);
+    //}
     // Schedule `ExampleCommand` when `exampleCondition` changes to `true`
    
 

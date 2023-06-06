@@ -20,42 +20,29 @@ public class DriveControlCommand extends CommandBase {
   @Override
   public void execute() {
 
-    //m_driveControlSubsystem.setSpeed1(0.3);
     //m_driveControlSubsystem.setAllSpeed(m_controller.getLeftY()); //adjusting speed
 
     if (m_controller.getPOV() == 0) { //constant speed
       System.out.println("D-Pad Up Pressed");
-      m_driveControlSubsystem.setSpeed1(1);
-    } 
-    else if (m_controller.getPOV() == 180) {
-      m_driveControlSubsystem.setAllSpeed(-0.3);
+      m_driveControlSubsystem.setAllSpeed(0.2);
+    } else if (m_controller.getPOV() == 180) {
+      m_driveControlSubsystem.setAllSpeed(-0.2);
+    }else if (m_controller.getPOV() == 90){
+      m_driveControlSubsystem.rightSwerve(0.2);
+    } else if (m_controller.getPOV() == 270){
+      m_driveControlSubsystem.leftSwerve(0.2);
+    }else if (m_controller.getPOV() == 315) {
+      m_driveControlSubsystem.upLeftDiagonal(0.2);
+    }else if (m_controller.getPOV() == 135) {
+      m_driveControlSubsystem.upRightDiagonal(0.2);
+    }else if (m_controller.getLeftBumper()) {
+      m_driveControlSubsystem.turnLeft(0.2);
+    }else if (m_controller.getRightBumper()) {
+      m_driveControlSubsystem.turnRight(0.2);
     }
-    //TODO MAKE AN ELSE IF STATEMENT FOR ALL DRIVE CONTROL 
-/* 
-    if (m_controller.getPOV() == 180) {
-      m_driveControlSubsystem.setAllSpeed(-0.3);
-    
-
-    if (m_controller.getPOV() == 90){
-      m_driveControlSubsystem.rightSwerve(0.3);
-    }
-
-    if (m_controller.getPOV() == 270){
-      m_driveControlSubsystem.leftSwerve(0.3);
-    }
-
-    //betty moves up daiagonal left at a constant speed
-    if (m_controller.getPOV() == 315) {
-      m_driveControlSubsystem.upLeftDiagonal(0.3);
-    }
-
-    if (m_controller.getPOV() == 135) {
-      m_driveControlSubsystem.upRightDiagonal(0.3);
-    }
-
-    /* */
   }
 
+    
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {}

@@ -2,11 +2,14 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.subsystems.DriveControlSubsytem;
 
 public class DriveControlCommand extends CommandBase {
   private DriveControlSubsytem m_driveControlSubsystem;
   private XboxController m_controller;
+  private JoystickButton m_joyA;
+
 
   public DriveControlCommand(DriveControlSubsytem subsystem, XboxController m_operator) {
     addRequirements(subsystem);
@@ -15,7 +18,9 @@ public class DriveControlCommand extends CommandBase {
   }
 
   @Override
-  public void initialize() {}
+  public void initialize() {
+    m_joyA = new JoystickButton(m_controller, 1);
+  }
 
   @Override
   public void execute() {
@@ -31,15 +36,23 @@ public class DriveControlCommand extends CommandBase {
       m_driveControlSubsystem.rightSwerve(0.2);
     } else if (m_controller.getPOV() == 270){
       m_driveControlSubsystem.leftSwerve(0.2);
-    }else if (m_controller.getPOV() == 315) {
-      m_driveControlSubsystem.upLeftDiagonal(0.2);
-    }else if (m_controller.getPOV() == 135) {
-      m_driveControlSubsystem.upRightDiagonal(0.2);
     }else if (m_controller.getLeftBumper()) {
-      m_driveControlSubsystem.turnLeft(0.2);
+      m_driveControlSubsystem.turnLeft(0.3);
     }else if (m_controller.getRightBumper()) {
-      m_driveControlSubsystem.turnRight(0.2);
+      m_driveControlSubsystem.turnRight(0.3);
     }
+
+    if (m_controller.getAButton()){
+      m_driveControlSubsystem.setAllSpeed(-0.2);
+    } 
+
+    if (m_joyA.whileTrue(null)
+    m_driveControlSubsystem.rightSwerve(0.2);
+    }
+
+    if ()
+
+
   }
 
     

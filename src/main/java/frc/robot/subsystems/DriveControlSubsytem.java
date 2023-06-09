@@ -49,26 +49,26 @@ public class DriveControlSubsytem extends SubsystemBase {
     talonSRX11.set(ControlMode.PercentOutput, speed);
   }
 
-  public void rightSwerve(double speed){
+  public void rightSwerve(double speed, double speed2){
     talonSRX8.set(ControlMode.PercentOutput, speed);
     talonSRX11.set(ControlMode.PercentOutput, -speed);
     talonSRX10.set(ControlMode.PercentOutput, -speed);
     talonSRX1.set(ControlMode.PercentOutput, speed);
   }
 
-  public void leftSwerve(double speed){
+  public void leftSwerve(double speed, double speed2){
     talonSRX8.set(ControlMode.PercentOutput, -speed);
     talonSRX11.set(ControlMode.PercentOutput, speed);
     talonSRX10.set(ControlMode.PercentOutput, speed);
     talonSRX1.set(ControlMode.PercentOutput, -speed);
   }
 
-  public void turnRight(double speed){
+  public void turnRight(double speed, double speed2){
     talonSRX10.set(ControlMode.PercentOutput, -speed);
     talonSRX8.set(ControlMode.PercentOutput, speed);
   } 
 
-  public void turnLeft(double speed){
+  public void turnLeft(double speed, double speed2){
     talonSRX1.set(ControlMode.PercentOutput, -speed);
     talonSRX11.set(ControlMode.PercentOutput, speed);
   }

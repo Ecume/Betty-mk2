@@ -7,82 +7,29 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class DriveControlSubsytem extends SubsystemBase {
 
-  private TalonSRX talonSRX1;
-  private TalonSRX talonSRX8;
-  private TalonSRX talonSRX10;
-  private TalonSRX talonSRX11;
+  private WPI_TalonSRX frontLeft = new WPI_TalonSRX(Constants.DriveConstants.frontL);
+  private WPI_TalonSRX backLeft = new WPI_TalonSRX(Constants.DriveConstants.backL);
+  private WPI_TalonSRX frontRight = new WPI_TalonSRX(Constants.DriveConstants.frontR);
+  private WPI_TalonSRX backRight = new WPI_TalonSRX(Constants.DriveConstants.backR);
+
+  private MecanumDrive mecanumDrive = new MecanumDrive(frontLeft, backLeft, frontRight, backRight);
+
 
   public DriveControlSubsytem() {
-      talonSRX1 = new TalonSRX(1);
-      talonSRX8 = new TalonSRX(8);
-      talonSRX10 = new TalonSRX(10);
-      talonSRX11 = new TalonSRX(11);
+    frontRight.setInverted(true);
+    backRight.setInverted(true);
+  }
+
+  public void drive(double x, double y, double rot) {
+    mecanumDrive.driveCartesian(x, y, rot);
   }
 
   @Override
-  public void periodic() {
-    System.out.println("Sensor Vel:" + talonSRX1.getSelectedSensorVelocity());
-    System.out.println("Sensor Pos:" + talonSRX1.getSelectedSensorPosition());
-    System.out.println("Out %" + talonSRX1.getMotorOutputPercent());
-  }
+  public void periodic() {}
 
-  public void setSpeed1(double current1) {
-    talonSRX1.set(ControlMode.PercentOutput, current1);
-  } 
-
-  public void setSpeed2(double current2) {
-    talonSRX8.set(ControlMode.PercentOutput, current2);
-  } 
-
-  public void setSpeed3(double current3) {
-    talonSRX10.set(ControlMode.PercentOutput, current3);
-  } 
-
-  public void setSpeed4(double current4) {
-    talonSRX11.set(ControlMode.PercentOutput, current4);
-  } 
-
-  public void setAllSpeed(double speed){
-    talonSRX1.set(ControlMode.PercentOutput, -speed);
-    talonSRX8.set(ControlMode.PercentOutput, speed);
-    talonSRX10.set(ControlMode.PercentOutput, -speed);
-    talonSRX11.set(ControlMode.PercentOutput, speed);
-  }
-
-  public void rightSwerve(double speed, double speed2){
-    talonSRX8.set(ControlMode.PercentOutput, speed);
-    talonSRX11.set(ControlMode.PercentOutput, -speed);
-    talonSRX10.set(ControlMode.PercentOutput, -speed);
-    talonSRX1.set(ControlMode.PercentOutput, speed);
-  }
-
-  public void leftSwerve(double speed, double speed2){
-    talonSRX8.set(ControlMode.PercentOutput, -speed);
-    talonSRX11.set(ControlMode.PercentOutput, speed);
-    talonSRX10.set(ControlMode.PercentOutput, speed);
-    talonSRX1.set(ControlMode.PercentOutput, -speed);
-  }
-
-  public void turnRight(double speed, double speed2){
-    talonSRX10.set(ControlMode.PercentOutput, -speed);
-    talonSRX8.set(ControlMode.PercentOutput, speed);
-  } 
-
-  public void turnLeft(double speed, double speed2){
-    talonSRX1.set(ControlMode.PercentOutput, -speed);
-    talonSRX11.set(ControlMode.PercentOutput, speed);
-  }
-  
-
-  public void upLeftDiagonal(double speed) {
-    talonSRX8.set(ControlMode.PercentOutput, speed);
-    talonSRX11.set(ControlMode.PercentOutput, speed);
-  } 
-
-  public void upRightDiagonal(double speed) {
-    talonSRX10.set(ControlMode.PercentOutput, speed);
-    talonSRX1.set(ControlMode.PercentOutput, speed);
-  } 
-
-
+  Override
+  public void simulationPeriodic() {}
 }
+
+
+

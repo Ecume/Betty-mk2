@@ -1,22 +1,21 @@
 package frc.robot;
 
 import frc.robot.Constants.OperatorConstants;
-import frc.robot.commands.Autos;
-import frc.robot.commands.DriveCmd;
-import frc.robot.subsystems.Drivetrain;
+import frc.robot.commands.DriveControlCommand;
+import frc.robot.subsystems.DriveControlSubsystem;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 
 public class RobotContainer {
-  private final Drivetrain mecanumDrivetrain = new DriveControlSubsytem();
+  private final DriveControlSubsystem mecanumDrivetrain = new DriveControlSubsystem();
 
-  private final Joystick driverJoystick =
-      new Joystick(OperatorConstants.driverJoystickPort);
+  private static XboxController XboxController  = new XboxController(1);
 
   
   public RobotContainer() {
   
-    mecanumDrivetrain.setDefaultCommand(new DriveCmd(mecanumDrivetrain, driverJoystick));
+    mecanumDrivetrain.setDefaultCommand(new DriveControlCommand(mecanumDrivetrain, XboxController));
     configureBindings();
   }
 
@@ -25,9 +24,6 @@ public class RobotContainer {
     
   }
 
-  public Command getAutonomousCommand() {
-    return Autos.exampleAuto(mecanumDrivetrain);
-  }
-
+ 
 
 }

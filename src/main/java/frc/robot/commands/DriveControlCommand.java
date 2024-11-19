@@ -1,17 +1,19 @@
 package frc.robot.commands;
 
-import frc.robot.subsystems.Drivetrain;
+
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.subsystems.DriveControlSubsystem;
 
 public class DriveControlCommand extends CommandBase {
-  private final Drivetrain mecanumDrivetrain;
-  private JoystickButton driverJoystick;
+  private final DriveControlSubsystem mecanumDrivetrain;
+  private XboxController xboxController;
 
 
-  public DriveControlCommand(DriveControlSubsytem mecanumDrivetrain, Joystick driverJoystick) {
+  public DriveControlCommand(DriveControlSubsystem mecanumDrivetrain, XboxController xboxController) {
     this.mecanumDrivetrain = mecanumDrivetrain;
-    this.driverJoystick = driverJoystick;
+    this.xboxController = xboxController;
     addRequirements(mecanumDrivetrain);
   }
 
@@ -20,7 +22,7 @@ public class DriveControlCommand extends CommandBase {
 
   @Override
   public void execute() {
-    mecanumDrivetrain.drive(-driverJoystick.getY(), -driverJoystick.getX(), -driverJoystick.getZ());
+    mecanumDrivetrain.drive(-xboxController.getLeftY(), -xboxController.getLeftX(), -xboxController.getRightX());
 
   }
 

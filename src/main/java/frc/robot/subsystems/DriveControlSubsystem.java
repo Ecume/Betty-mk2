@@ -2,10 +2,13 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
+import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants;
 
-public class DriveControlSubsytem extends SubsystemBase {
+public class DriveControlSubsystem extends SubsystemBase {
 
   private WPI_TalonSRX frontLeft = new WPI_TalonSRX(Constants.DriveConstants.frontL);
   private WPI_TalonSRX backLeft = new WPI_TalonSRX(Constants.DriveConstants.backL);
@@ -15,7 +18,7 @@ public class DriveControlSubsytem extends SubsystemBase {
   private MecanumDrive mecanumDrive = new MecanumDrive(frontLeft, backLeft, frontRight, backRight);
 
 
-  public DriveControlSubsytem() {
+  public DriveControlSubsystem() {
     frontRight.setInverted(true);
     backRight.setInverted(true);
   }
@@ -27,8 +30,7 @@ public class DriveControlSubsytem extends SubsystemBase {
   @Override
   public void periodic() {}
 
-  Override
-  public void simulationPeriodic() {}
+  
 }
 
 
